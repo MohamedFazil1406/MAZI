@@ -1,7 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-
-// import { checkBotId } from 'botid/server';
-
 import { ERROR_MESSAGES, HTTP_STATUS, VALIDATION } from "@/lib/constant";
 import { prisma } from "@/lib/prisma";
 import { parseError, verifyPIN } from "@/lib/utils";
@@ -10,15 +7,6 @@ export async function POST(
   request: NextRequest,
   { params }: RouteContext<"/api/calender/[id]/update">,
 ) {
-  // const verification = await checkBotId();
-
-  // if (verification.isBot) {
-  //   return NextResponse.json(
-  //     { error: ERROR_MESSAGES.BOT.VERIFICATION_FAILED },
-  //     { status: HTTP_STATUS.FORBIDDEN },
-  //   );
-  // }
-
   try {
     const { id } = await params;
     const normalizedId = id.toUpperCase();
