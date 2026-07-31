@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -153,7 +153,7 @@ export function generateColorFromName(name: string, minContrast = 4.5): string {
 }
 
 export function generatePIN(): string {
-  return Math.floor(100_000 + Math.random() * 9_99_999).toString();
+  return Math.floor(100_000 + Math.random() * 9_00_000).toString();
 }
 
 export function generateCalenderId(): string {
