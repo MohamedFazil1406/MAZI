@@ -49,7 +49,7 @@ export default function CalendarPage() {
       setLoadingStep("verifying");
       setLoadingError(""); // Clear any previous errors
 
-      const response = await fetch("/api/calendar/join", {
+      const response = await fetch("/api/calender/join", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: calendarId, pin: enteredPin }),
@@ -71,7 +71,7 @@ export default function CalendarPage() {
 
       // Convert dates and set events
       // biome-ignore lint/suspicious/noExplicitAny: API response type is dynamic
-      const formattedEvents: CalendarEvent[] = data.events.map((e: any) => ({
+      const formattedEvents: CalendarEvent[] = data.event.map((e: any) => ({
         ...e,
         start: new Date(e.start),
         end: new Date(e.end),
@@ -139,7 +139,7 @@ export default function CalendarPage() {
         setLoadingStep("connecting");
         setLoadingStep("verifying");
 
-        const response = await fetch("/api/calendar/join", {
+        const response = await fetch("/api/calender/join", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id: calendarId, pin: storedPin }),
@@ -161,11 +161,14 @@ export default function CalendarPage() {
 
         // Convert dates and set events
         // biome-ignore lint/suspicious/noExplicitAny: API response type is dynamic
-        const formattedEvents: CalendarEvent[] = data.events.map((e: any) => ({
-          ...e,
-          start: new Date(e.start),
-          end: new Date(e.end),
-        }));
+        console.log(data);
+        const formattedEvents: CalendarEvent[] = (data.event ?? []).map(
+          (e: any) => ({
+            ...e,
+            start: new Date(e.start),
+            end: new Date(e.end),
+          }),
+        );
         setEvents(formattedEvents);
 
         setLoadingStep("syncing");
@@ -223,8 +226,8 @@ export default function CalendarPage() {
       })
       .on("broadcast", { event: "events-modified" }, ({ payload }) => {
         // Handle event modifications
-        if (payload.events) {
-          const formattedEvents: CalendarEvent[] = payload.events.map(
+        if (payload.event) {
+          const formattedEvents: CalendarEvent[] = payload.event.map(
             // biome-ignore lint/suspicious/noExplicitAny: Realtime payload type is dynamic
             (e: any) => ({
               ...e,
@@ -247,7 +250,7 @@ export default function CalendarPage() {
 
   const handleCreateEvent = async (title: string, start: Date, end: Date) => {
     try {
-      const response = await fetch(`/api/calendar/${calendarId}/events`, {
+      const response = await fetch(`/api/calender/${calendarId}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -289,7 +292,7 @@ export default function CalendarPage() {
   const handleDeleteEvent = useCallback(
     async (eventId: string) => {
       try {
-        const response = await fetch(`/api/calendar/${calendarId}/events`, {
+        const response = await fetch(`/api/calender/${calendarId}/events`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -322,7 +325,7 @@ export default function CalendarPage() {
 
   const handleNameChange = async (name: string) => {
     try {
-      const response = await fetch(`/api/calendar/${calendarId}/update`, {
+      const response = await fetch(`/api/calender/${calendarId}/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

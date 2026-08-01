@@ -25,7 +25,7 @@ import { MarkAvailabilityDialog } from "@/components/mark-availability-dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { type CalendarEvent, useCalendarStore } from "@/lib/calendar-store";
-import { useSettingsStore } from "@/lib/settings-store";
+import { useSettingsStore } from "@/lib/setting-store";
 import { cn, parseError } from "@/lib/utils";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -71,7 +71,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         getDay,
         locales,
       }),
-    [weekStartsOn]
+    [weekStartsOn],
   );
 
   const calendarFormats = useMemo(
@@ -82,7 +82,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         culture?: string,
         localizer?: {
           format: (date: Date, fmt: string, culture?: string) => string;
-        }
+        },
       ) => {
         const fmt = timeFormat === "24h" ? "HH:mm" : "h:mm a";
         const s = localizer?.format(start, fmt, culture) ?? "";
@@ -94,7 +94,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         culture?: string,
         localizer?: {
           format: (date: Date, fmt: string, culture?: string) => string;
-        }
+        },
       ) => {
         const fmt = timeFormat === "24h" ? "HH:mm" : "h:mm a";
         const s = localizer?.format(start, fmt, culture) ?? "";
@@ -106,14 +106,14 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         culture?: string,
         localizer?: {
           format: (date: Date, fmt: string, culture?: string) => string;
-        }
+        },
       ) => {
         const s = localizer?.format(start, "MMM d, yyyy", culture) ?? "";
         const e = localizer?.format(end, "MMM d, yyyy", culture) ?? "";
         return `${s} – ${e}`;
       },
     }),
-    [timeFormat]
+    [timeFormat],
   );
 
   const handleSelectSlot = useCallback(
@@ -125,7 +125,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
       }
       // In delete mode, do nothing on slot selection - only allow clicking specific events
     },
-    [isDrawMode]
+    [isDrawMode],
   );
 
   const handleSelectEvent = useCallback(
@@ -153,7 +153,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         }
       }
     },
-    [isDrawMode, onDeleteEvent]
+    [isDrawMode, onDeleteEvent],
   );
 
   const handleNameSubmit = async (userName: string) => {
@@ -184,7 +184,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
       const navigate = navigators[currentView];
       return navigate ? navigate(currentDate, 1) : currentDate;
     },
-    [currentDate, currentView]
+    [currentDate, currentView],
   );
 
   /** Handles calendar navigation (prev, next, today). */
@@ -196,7 +196,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
       }
       setCurrentDate(getNavigatedDate(action === "NEXT" ? 1 : -1));
     },
-    [getNavigatedDate]
+    [getNavigatedDate],
   );
 
   // Style events based on their color
@@ -214,7 +214,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         },
       };
     },
-    [isDrawMode]
+    [isDrawMode],
   );
 
   // Memoized configuration
@@ -222,7 +222,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
     () => ({
       scrollToTime: new Date(1970, 1, 1, 6),
     }),
-    []
+    [],
   );
 
   /** Switches to the specified calendar view and persists to localStorage. */
@@ -237,7 +237,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
       // biome-ignore lint/suspicious/noExplicitAny: react-big-calendar toolbar props type is complex
       toolbar: (props: any) => (
         <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-2">
-          <ToggleGroup type="single" variant="outline">
+          <ToggleGroup variant="outline">
             <ToggleGroupItem
               className="gap-1"
               onClick={() => handleNavigate("PREV")}
@@ -263,13 +263,14 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
           </ToggleGroup>
           <span className="rbc-toolbar-label">{props.label}</span>
           <ToggleGroup
-            onValueChange={(value) => {
+            value={[currentView]}
+            onValueChange={(values) => {
+              const value = values[0];
+
               if (value) {
                 handleViewChange(value as View);
               }
             }}
-            type="single"
-            value={currentView}
             variant="outline"
           >
             <ToggleGroupItem value={Views.MONTH}>Month</ToggleGroupItem>
@@ -280,7 +281,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
         </div>
       ),
     }),
-    [handleNavigate, handleViewChange, currentView]
+    [handleNavigate, handleViewChange, currentView],
   );
 
   return (
@@ -292,7 +293,7 @@ export function Calendar({ onCreateEvent, onDeleteEvent }: CalendarProps) {
               "h-full min-h-160",
               isDrawMode
                 ? "[&>div]:last:cursor-crosshair"
-                : "[&>div]:last:cursor-not-allowed"
+                : "[&>div]:last:cursor-not-allowed",
             )}
             components={components}
             date={currentDate}

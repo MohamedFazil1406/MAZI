@@ -77,7 +77,7 @@ Click the Invite URL or enter Calendar ID and PIN to join!`;
   const handleRotatePin = async () => {
     setIsRotatingPin(true);
     try {
-      const response = await fetch(`/api/calendar/${calendarId}/rotate-pin`, {
+      const response = await fetch(`/api/calender/${calendarId}/rotate-pin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

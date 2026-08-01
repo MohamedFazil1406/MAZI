@@ -158,26 +158,29 @@ export function FloatingControls({
               {/* Desktop view (md+): Full toggle */}
               <ToggleGroup
                 className="order-1 flex sm:order-2"
-                onValueChange={(value: any) => {
-                  if (value) {
-                    setDrawMode(value === "draw");
-                  }
-                }}
                 value={[isDrawMode ? "draw" : "delete"]}
+                onValueChange={(values: string[]) => {
+                  if (values.length === 0) return;
+
+                  const selected = values[0];
+
+                  setDrawMode(selected === "draw");
+                }}
                 variant="outline"
               >
                 <ToggleGroupItem
+                  value="draw"
                   aria-label="Mark available"
                   className="data-[state=on]:bg-green-500 data-[state=on]:text-white"
-                  value="draw"
                 >
                   <CheckIcon className="size-5" />
                   Mark Available
                 </ToggleGroupItem>
+
                 <ToggleGroupItem
+                  value="delete"
                   aria-label="Delete available"
                   className="data-[state=on]:bg-red-500 data-[state=on]:text-white"
-                  value="delete"
                 >
                   <XIcon className="size-5" />
                   Delete Available
