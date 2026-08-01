@@ -166,7 +166,7 @@ export function PinEntryDialog({
               Join Calendar
             </Button>
           </Form.Submit>
-          <DrawerClose asChild>
+          <DrawerClose>
             <Button
               className="w-full"
               disabled={isLoading}
@@ -187,7 +187,6 @@ export function PinEntryDialog({
   if (isMobile) {
     return (
       <Drawer
-        dismissible={false}
         onOpenChange={(newOpen) => {
           // Only allow closing via the Cancel button
           if (!(newOpen || isLoading)) {

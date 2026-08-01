@@ -262,7 +262,7 @@ export function MarkAvailabilityDialog({
               Mark Available
             </Button>
           </Form.Submit>
-          <DrawerClose asChild>
+          <DrawerClose>
             <Button
               className="w-full"
               disabled={isCreating}

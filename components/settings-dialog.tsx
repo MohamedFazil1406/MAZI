@@ -76,13 +76,12 @@ function SettingsContent() {
         <Label className="font-semibold text-sm">Time Format</Label>
         <ToggleGroup
           className="justify-start"
-          onValueChange={(value) => {
-            if (value) {
-              setTimeFormat(value as "12h" | "24h");
+          onValueChange={([value]) => {
+            if (value === "12h" || value === "24h") {
+              setTimeFormat(value);
             }
           }}
-          type="single"
-          value={timeFormat}
+          value={[timeFormat]}
           variant="outline"
         >
           <ToggleGroupItem value="12h">12-hour</ToggleGroupItem>
@@ -102,8 +101,7 @@ function SettingsContent() {
               setWeekStartsOn(Number(value) as 0 | 1);
             }
           }}
-          type="single"
-          value={String(weekStartsOn)}
+          value={[String(weekStartsOn)]}
           variant="outline"
         >
           <ToggleGroupItem value="0">Sunday</ToggleGroupItem>

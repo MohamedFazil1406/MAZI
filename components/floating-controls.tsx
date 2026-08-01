@@ -163,8 +163,7 @@ export function FloatingControls({
                     setDrawMode(value === "draw");
                   }
                 }}
-                type="single"
-                value={isDrawMode ? "draw" : "delete"}
+                value={[isDrawMode ? "draw" : "delete"]}
                 variant="outline"
               >
                 <ToggleGroupItem
@@ -190,7 +189,7 @@ export function FloatingControls({
             <div className="flex gap-1 md:gap-2">
               {/* Tablet: Icon only, Desktop: With text */}
               <Tooltip>
-                <TooltipTrigger asChild>
+                <TooltipTrigger>
                   <Button
                     className="w-auto px-3"
                     id="tour-step-4"
@@ -253,7 +252,7 @@ export function FloatingControls({
                 )}
                 Save Name
               </Button>
-              <DrawerClose asChild>
+              <DrawerClose>
                 <Button
                   disabled={isSavingName}
                   onClick={handleNameCancel}

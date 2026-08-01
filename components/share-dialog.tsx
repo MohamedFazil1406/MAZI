@@ -230,7 +230,7 @@ Click the Invite URL or enter Calendar ID and PIN to join!`;
                 </>
               )}
             </Button>
-            <DrawerClose asChild>
+            <DrawerClose>
               <Button
                 className="w-full"
                 onClick={() => onOpenChange(false)}
@@ -276,7 +276,7 @@ Click the Invite URL or enter Calendar ID and PIN to join!`;
               </>
             )}
           </Button>
-          <DialogClose asChild>
+          <DialogClose>
             <Button
               className="w-full"
               onClick={() => onOpenChange(false)}

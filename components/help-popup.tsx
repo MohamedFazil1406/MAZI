@@ -23,7 +23,7 @@ export function HelpPopup() {
 
   return (
     <Popover onOpenChange={setIsPopoverOpen} open={isPopoverOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger>
         <Button id="tour-step-5" size="icon" variant="outline">
           <QuestionIcon className="size-5" />
           <span className="sr-only">Help</span>
