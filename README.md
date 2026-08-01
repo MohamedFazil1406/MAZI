@@ -1,37 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MAZI 🗓️
 
-## Getting Started
+> **MAZI** (Μαζί) is a Greek word meaning **"together."**
 
-First, run the development server:
+MAZI is a collaborative scheduling platform that helps friends, teammates, and groups quickly find a time to meet. Instead of creating accounts or managing invitations, users can simply create a shared calendar and invite others using a **Calendar ID** and **PIN**.
+
+Everyone joins the same shared calendar, marks their availability, and instantly sees when everyone's schedules overlap, making it easy to plan meetings without the usual back-and-forth messaging.
+
+---
+
+## ✨ Features
+
+- 📅 Create shared calendars instantly
+- 🔑 Join using a **Calendar ID** and **PIN** — no sign-up required
+- 👥 Collaborate in real time with friends or teammates
+- ✅ Mark your available time slots
+- ❌ Remove availability with a single click
+- 📊 Availability insights and meeting analytics
+- 🤝 Find overlapping free time across participants
+- 📱 Responsive design for desktop and mobile
+- ⚡ Fast, modern, and lightweight experience
+
+---
+
+## 🚀 How It Works
+
+1. Create a new calendar.
+2. Share the generated **Calendar ID** and **PIN** with others.
+3. Participants join the shared calendar using the credentials.
+4. Everyone marks their available time slots.
+5. MAZI highlights overlapping availability, helping the group quickly decide the best meeting time.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Base UI
+- React Big Calendar
+- Zustand
+
+### Backend
+
+- Next.js Route Handlers
+- Prisma ORM
+- PostgreSQL
+- Supabase
+
+### Deployment
+
+- Vercel
+
+---
+
+## 📦 Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/MohamedFazil1406/MAZI.git
+
+cd MAZI
+
+pnpm install
+
+pnpm prisma generate
+
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+https://mazi-dun.vercel.app/
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔐 Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env` file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+DATABASE_URL=
+DIRECT_URL=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-"# MAZI" 
+## 📸 Screenshots
+
+<table>
+<tr>
+<td width="50%">
+
+### Home Page
+
+<img src="./screenshots/create-calender.png" width="100%">
+
+</td>
+
+<td width="50%">
+
+### Join Calendar
+
+<img src="./screenshots/join-calender.png" width="100%">
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### Collaborative Calendar
+
+<img src="./screenshots/calender-page.png" width="100%">
+
+</td>
+
+<td width="50%">
+
+### Share Calendar
+
+<img src="./screenshots/share-page.png" width="100%">
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new branch
+
+```bash
+git checkout -b feature/my-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "feat: add new feature"
+```
+
+4. Push your branch
+
+```bash
+git push origin feature/my-feature
+```
+
+5. Open a Pull Request
+
+---
+
+## 👨‍💻 Author
+
+**Mohamed Fazil**
+
+- GitHub: https://github.com/MohamedFazil1406
+- LinkedIn: https://www.linkedin.com/in/mohamedfazil1406
+- Website: https://www.fazil-coding.me
