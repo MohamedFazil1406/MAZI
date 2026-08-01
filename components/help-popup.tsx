@@ -48,7 +48,7 @@ export function HelpPopup() {
             onClick={() => {
               setIsPopoverOpen(false);
               window.open(
-                "https://github.com/dulapahv/Issho/blob/main/README.md",
+                "https://github.com/MohamedFazil1406/MAZI/blob/main/README.md",
                 "_blank",
               );
             }}
@@ -61,7 +61,7 @@ export function HelpPopup() {
             className="justify-start rounded-sm"
             onClick={() => {
               setIsPopoverOpen(false);
-              window.open("https://github.com/dulapahv/Issho", "_blank");
+              window.open("https://github.com/MohamedFazil1406", "_blank");
             }}
             variant="ghost"
           >
@@ -72,11 +72,11 @@ export function HelpPopup() {
             With 💕 from{" "}
             <Link
               className="underline"
-              href="https://dulapahv.dev"
+              href="https://www.fazil-coding.me/"
               rel="noreferrer"
               target="_blank"
             >
-              dulapahv
+              Fazil
             </Link>
           </p>
         </div>
